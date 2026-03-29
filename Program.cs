@@ -187,6 +187,7 @@ namespace TextRPG
             int enemiesDefeatedInLevel = 0;
             int totalEnemiesDefeated = 0;
             bool gameRunning = true;
+            bool quitGame = false;
 
             while (gameRunning && player.Health > 0)
             {
@@ -251,6 +252,8 @@ namespace TextRPG
                     
                     if (choice == "5")
                     {
+                        quitGame = true;
+                        gameRunning = false;
                         Console.WriteLine("════════════════════════════════════════");
                         Console.WriteLine("  FINAL PLAYER STATS            ");
                         Console.WriteLine("════════════════════════════════════════");
@@ -262,7 +265,6 @@ namespace TextRPG
                         Console.WriteLine("Current Level: " + currentLevel);
                         Console.WriteLine("Potions Remaining: " + potionsCount);
                         Console.WriteLine("════════════════════════════════════════");
-                        gameRunning = false;
                         break;
                     }
 
@@ -325,6 +327,11 @@ namespace TextRPG
                     }
                     
                     Console.WriteLine("─────────────────────────────────────────");
+                }
+
+                if (quitGame)
+                {
+                    break;
                 }
 
                 if (player.Health <= 0)
